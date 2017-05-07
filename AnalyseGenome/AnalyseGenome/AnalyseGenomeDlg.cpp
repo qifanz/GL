@@ -7,7 +7,6 @@
 #include "AnalyseGenomeDlg.h"
 #include "afxdialogex.h"
 #include <iostream>
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -161,12 +160,13 @@ void CAnalyseGenomeDlg::OnBnClickedButton1()
 	/*
 	*WSAStartup
 	*/
+	/*
 	WORD wVersionRequested;
 	WSADATA wsaData;
 	int err;
 	wVersionRequested = MAKEWORD(2, 2);
 	err = WSAStartup(wVersionRequested, &wsaData);
-
+	*/
 	listenerSock.Create(8080);
 	if (listenerSock.Listen())
 		AfxMessageBox(_T("Now listening"));

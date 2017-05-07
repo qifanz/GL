@@ -51,7 +51,7 @@ BOOL CAnalyseGenomeApp::InitInstance()
 
 	CWinApp::InitInstance();
 
-
+	AfxSocketInit();
 	AfxEnableControlContainer();
 
 	// Create the shell manager, in case the dialog contains

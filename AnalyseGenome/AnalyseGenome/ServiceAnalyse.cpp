@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ServiceAnalyse.h"
 
-// POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouvé dans le génome. Seul le parcours change selon le type d'analyse.
+// POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouv?dans le génome. Seul le parcours change selon le type d'analyse.
 
 void AnalyseCiblee(Analyse& a, string maladie)
 {
