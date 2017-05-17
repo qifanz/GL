@@ -201,9 +201,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Analyse.cpp" />
     <ClCompile Include="AnalyseGenome.cpp" />
     <ClCompile Include="AnalyseGenomeDlg.cpp" />
     <ClCompile Include="ConnectedSocket.cpp" />
+    <ClCompile Include="Genome.cpp" />
     <ClCompile Include="ListenerSocket.cpp" />
     <ClCompile Include="ServiceAnalyse.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

@@ -13,16 +13,9 @@ Analyse::~Analyse()
 {
 }
 
-void Analyse::addResult(string maladie, bool resultat)
+void Analyse::addResult(string maladie)
 {
-	map<string, bool>::iterator it;
-	it = resultats.find(maladie);
-	if (it != resultats.end()) {
-		it->second = resultat;
-	}
-	else {
-		resultats.insert(pair<string, bool>(maladie, resultat));
-	}
+	resultats[maladie] = true;
 }
 
 void Analyse::afficher()

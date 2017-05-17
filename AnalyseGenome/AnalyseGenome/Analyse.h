@@ -10,7 +10,7 @@ public:
 	~Analyse();
 
 public:
-	void addResult(string maladie, bool resultat);
+	void addResult(string maladie);
 	void afficher();
 	Genome getGenome();
 
