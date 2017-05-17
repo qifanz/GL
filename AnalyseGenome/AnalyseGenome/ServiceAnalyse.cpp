@@ -17,16 +17,20 @@ void ServiceAnalyse::AnalyseGenerale(Analyse& a)
 	//Utiliser un iterator pour parcourir toute la map. Pour chaque pair, lancer une analyse
 	genStart = a.genome.mots.begin;
 	genStop = a.genome.mots.end;
-	for (DICO_IT tuple = dictionnaire.begin; tuple != dictionnaire.end; tuple++) {
+	for (DICO_IT tuple = dictionnaire.begin; tuple != dictionnaire.end; tuple++) 
+	{
 		ParcoursGenome(tuple, a);
 	}
 }
 
 void ServiceAnalyse::ParcoursGenome(DICO_IT tuple, Analyse& a) {
-	for (MOTS_IT i = (*tuple).second.begin; i != (*tuple).second.end; i++) {
-		for (GENO_IT gen = genStart; gen != genStop; gen++) {
-			if ((*i) == (*gen)) {
-				a.addResult(*i);
+	for (MOTS_IT i = (*tuple).second.begin; i != (*tuple).second.end; i++) 
+	{
+		for (GENO_IT gen = genStart; gen != genStop; gen++) 
+		{
+			if ((*i) == (*gen)) 
+			{
+				a.addResult((*tuple).first);
 			}
 		}
 	}
@@ -35,6 +39,12 @@ void ServiceAnalyse::ParcoursGenome(DICO_IT tuple, Analyse& a) {
 set<string> ServiceAnalyse::getListeMaladies()
 {
 	//Utiliser un iterator pour parcourir toute la map. Renvoie un set correspondant a la liste des maladies.
+	set<string> listeMaladies;
+	for(DICO_IT i = dictionnaire.begin; i!=dictionnaire.end; i++)
+	{
+		listeMaladies.insert((*i).first);
+	}
+	return listeMaladies;
 }
 
 ServiceAnalyse::ServiceAnalyse()
