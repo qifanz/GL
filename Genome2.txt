@@ -1,11 +1,11 @@
-MA v1.0\r\n
-AAAT\r\n
-TTTC\r\n
-CCCG\r\n
-GGGG\r\n
-AACC\r\n
-TTGG\r\n
-ATAT\r\n
-AATT\r\n
-ATGC\r\n
-AAcc\r\n
+MA v1.0
+AAAT
+TTTC
+CCCG
+GGGG
+AACC
+TTGG
+ATAT
+AATT
+ATGC
+AAcc
