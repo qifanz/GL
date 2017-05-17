@@ -6,6 +6,7 @@ using namespace std;
 class Genome
 {
 public:
+	Genome();
 	Genome(string nomFichierGenome);
 	~Genome();
 public:

@@ -6,6 +6,10 @@
 #include <fstream>
 using namespace std;
 
+Genome::Genome()
+{
+}
+
 Genome::Genome(string nomFichierGenome)
 {
 	ifstream fichier(nomFichierGenome, ios::in);

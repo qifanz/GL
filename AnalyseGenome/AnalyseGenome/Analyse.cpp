@@ -4,6 +4,10 @@
 using namespace std;
 
 
+Analyse::Analyse()
+{
+}
+
 Analyse::Analyse(Genome genome, string type, string version) : genome(genome), type(type), version(version)
 {
 }

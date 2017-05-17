@@ -1,6 +1,15 @@
 #include "stdafx.h"
 #include "ServiceAnalyse.h"
 
+ServiceAnalyse::ServiceAnalyse()
+{
+}
+
+
+ServiceAnalyse::~ServiceAnalyse()
+{
+}
+
 // POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouvé dans le génome. Seul le parcours change selon le type d'analyse.
 
 void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
@@ -47,11 +56,4 @@ set<string> ServiceAnalyse::getListeMaladies()
 	return listeMaladies;
 }
 
-ServiceAnalyse::ServiceAnalyse()
-{
-}
 
-
-ServiceAnalyse::~ServiceAnalyse()
-{
-}
