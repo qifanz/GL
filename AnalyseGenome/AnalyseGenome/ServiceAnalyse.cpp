@@ -6,8 +6,8 @@
 void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 {
 	//Utiliser find pour trouver le pair<maladie,mots> pour la maladie donnée dans la map.
-	genStart = a.getGenome.mots.begin();
-	genStop = a.getGenome.mots.end();
+	genStart = a.getGenome().mots.begin();
+	genStop = a.getGenome().mots.end();
 	DICO_IT tuple = dictionnaire.find(maladie);
 	ParcoursGenome(tuple, a);
 }
@@ -15,8 +15,8 @@ void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 void ServiceAnalyse::AnalyseGenerale(Analyse& a)
 {
 	//Utiliser un iterator pour parcourir toute la map. Pour chaque pair, lancer une analyse
-	genStart = a.getGenome.mots.begin();
-	genStop = a.getGenome.mots.end();
+	genStart = a.getGenome().mots.begin();
+	genStop = a.getGenome().mots.end();
 	for (DICO_IT tuple = dictionnaire.begin(); tuple != dictionnaire.end(); tuple++) 
 	{
 		ParcoursGenome(tuple, a);
