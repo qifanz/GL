@@ -30,14 +30,20 @@ Genome::~Genome()
 {
 }
 
-void Genome::afficher()
+ostream & operator<<(ostream & flux, Genome const & genome)
 {
-	cout << version << endl;
+	genome.afficher(flux);
+	return flux;
+}
+
+void Genome::afficher(ostream &flux) const
+{
+	flux << version << endl;
 	multiset<string>::const_iterator
 		msit(mots.begin()),
 		msend(mots.end());
 	for (; msit != msend; ++msit) {
-		cout << *msit << endl;
+		flux << *msit << endl;
 	}
 }
 

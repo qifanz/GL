@@ -9,7 +9,8 @@ public:
 	Genome(string nomFichierGenome);
 	~Genome();
 public:
-	void afficher();
+	friend ostream& operator<<(ostream &flux, Genome const& genome);
+	void afficher(ostream &flux) const;
 public:
 	string version;
 	multiset<string> mots;

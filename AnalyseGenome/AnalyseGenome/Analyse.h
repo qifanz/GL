@@ -11,7 +11,8 @@ public:
 
 public:
 	void addResult(string maladie);
-	void afficher();
+	friend ostream& operator<<(ostream &flux, Analyse const& analyse);
+	void afficher(ostream &flux) const;
 	Genome getGenome();
 
 public:

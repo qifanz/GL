@@ -18,17 +18,24 @@ void Analyse::addResult(string maladie)
 	resultats[maladie] = true;
 }
 
-void Analyse::afficher()
+
+ostream & operator<<(ostream & flux, Analyse const & analyse)
 {
-	cout << version << endl << type << endl;
-	for (map<string, bool>::iterator it = resultats.begin(); it != resultats.end(); ++it)
+	analyse.afficher(flux);
+	return flux;
+}
+
+void Analyse::afficher(ostream &flux) const
+{
+	flux << version << endl << type << endl;
+	for (map<string, bool>::const_iterator it = resultats.begin(); it != resultats.end(); ++it)
 	{
-		cout << it->first << " : ";
+		flux << it->first << " : ";
 		if (it->second) {
-			cout << "oui" << endl;
+			flux << "oui" << endl;
 		}
 		else {
-			cout << "non" << endl;
+			flux << "non" << endl;
 		}
 	}
 }
@@ -37,3 +44,4 @@ Genome Analyse::getGenome()
 {
 	return genome;
 }
+
