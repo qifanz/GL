@@ -28,7 +28,7 @@ void Analyse::addResult(string maladie, bool resultat)
 void Analyse::afficher()
 {
 	cout << version << endl << type << endl;
-	for (map<string,bool>::iterator it = resultats.begin(); it != resultats.end(); ++it)
+	for (map<string, bool>::iterator it = resultats.begin(); it != resultats.end(); ++it)
 	{
 		cout << it->first << " : ";
 		if (it->second) {
@@ -38,4 +38,9 @@ void Analyse::afficher()
 			cout << "non" << endl;
 		}
 	}
+}
+
+Genome Analyse::getGenome()
+{
+	return genome;
 }

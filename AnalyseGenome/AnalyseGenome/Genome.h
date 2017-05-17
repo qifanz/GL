@@ -1,16 +1,17 @@
 #pragma once
 #include <string>
-#include <list>
+#include <set>
+
 using namespace std;
 class Genome
 {
 public:
 	Genome(string nomFichierGenome);
 	~Genome();
-public :
+public:
 	void afficher();
 public:
 	string version;
-	list<string> genome;
+	multiset<string> mots;
 };
 

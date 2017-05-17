@@ -186,9 +186,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Analyse.h" />
     <ClInclude Include="AnalyseGenome.h" />
     <ClInclude Include="AnalyseGenomeDlg.h" />
     <ClInclude Include="ConnectedSocket.h" />
+    <ClInclude Include="Genome.h" />
     <ClInclude Include="ListenerSocket.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ServiceAnalyse.h">

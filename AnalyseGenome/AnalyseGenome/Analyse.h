@@ -12,6 +12,7 @@ public:
 public:
 	void addResult(string maladie, bool resultat);
 	void afficher();
+	Genome getGenome();
 
 public:
 	string type;

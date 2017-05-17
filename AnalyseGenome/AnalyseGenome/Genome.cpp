@@ -14,7 +14,7 @@ Genome::Genome(string nomFichierGenome)
 		getline(fichier, version);
 		string mot;
 		while (getline(fichier, mot)) {
-			genome.push_back(mot);
+			mots.insert(mot);
 		}
 		cout << "Genome créé" << endl;
 		fichier.close();
@@ -33,11 +33,11 @@ Genome::~Genome()
 void Genome::afficher()
 {
 	cout << version << endl;
-	list<string>::const_iterator
-		lit(genome.begin()),
-		lend(genome.end());
-	for (; lit != lend; ++lit) {
-		cout << *lit << endl;
+	multiset<string>::const_iterator
+		msit(mots.begin()),
+		msend(mots.end());
+	for (; msit != msend; ++msit) {
+		cout << *msit << endl;
 	}
 }
 
