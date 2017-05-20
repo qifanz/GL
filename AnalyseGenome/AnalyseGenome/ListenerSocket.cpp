@@ -18,7 +18,7 @@ ListenerSocket::~ListenerSocket()
 
 void ListenerSocket::OnAccept(int nErrorCode)
 {
-	TRACE("1\r\n");
+	TRACE("connection established\r\n");
 	ConnectedSocket* pConnectedSock = new ConnectedSocket();
 
 	CString strPeerName;

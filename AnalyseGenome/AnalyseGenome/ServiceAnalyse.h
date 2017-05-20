@@ -33,7 +33,7 @@ private :
 	void ParcoursGenome(DICO_IT tuple, Analyse& a);
 
 	DICO dictionnaire;
-	//genStart et genStop définissent les bornes du génome. Evite de les calculer à chaque appel de ParcoursGenome.
+	//genStart et genStop définissent les bornes du génome. Evite de les calculer ?chaque appel de ParcoursGenome.
 	GENO_IT genStart;	
 	GENO_IT genStop;
 
