@@ -48,6 +48,9 @@
     <ClInclude Include="Genome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UtilParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnalyseGenome.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Genome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

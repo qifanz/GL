@@ -157,22 +157,15 @@ HCURSOR CAnalyseGenomeDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeDlg::OnBnClickedButton1()
 {
-	/*
-	*WSAStartup
-	*/
-	/*
-	WORD wVersionRequested;
-	WSADATA wsaData;
-	int err;
-	wVersionRequested = MAKEWORD(2, 2);
-	err = WSAStartup(wVersionRequested, &wsaData);
-	*/
-	listenerSock.Create(8080);
-	if (listenerSock.Listen())
+	service = new ServiceAnalyse();
+	service->initialise("abc");
+	listenerSock = new ListenerSocket(service);
+	listenerSock->Create(8080);
+	if (listenerSock->Listen())
 		AfxMessageBox(_T("Now listening"));
 	else
 	{
 		AfxMessageBox(_T("Unable to listen"));
-		listenerSock.Close();
+		listenerSock->Close();
 	} 
 }

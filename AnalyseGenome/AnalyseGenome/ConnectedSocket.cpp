@@ -15,6 +15,11 @@ ConnectedSocket::~ConnectedSocket()
 {
 }
 
+ConnectedSocket::ConnectedSocket(ServiceAnalyse* service)
+{
+	this->service = service;
+}
+
 void ConnectedSocket::OnReceive(int nErrorCode)
 {
 	TRACE("Msg received: \r\n");
@@ -28,6 +33,12 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 
 	szBuff[nReceivedSize - 1] = '\0';
 	TRACE(szBuff);
+
+	if (strstr(szBuff, "GET DISEASES"))
+	{
+		UtilParser paser;
+		Send(paser.prepareMsgListMaladies(this->service->getListeMaladies()), BUFF_LEN);
+	}
 
 	CAsyncSocket::OnReceive(nErrorCode);
 }

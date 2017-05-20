@@ -1,18 +1,44 @@
 #include "stdafx.h"
 #include "ServiceAnalyse.h"
-
+#include <fstream>
+#include <string>
+using namespace std;
 ServiceAnalyse::ServiceAnalyse()
 {
 }
+
 
 
 ServiceAnalyse::~ServiceAnalyse()
 {
 }
 
-void ServiceAnalyse::initialise(string dicoFile)
+void ServiceAnalyse::initialise(string nomFichierGenome)
 //uniquement pour les tests, initialise le serveur avec un dictionnaire
 {
+	/**
+	ifstream fichier(nomFichierGenome, ios::in);
+	if (fichier)
+	{
+		string version;
+		getline(fichier, version);
+		string mot;
+		while (getline(fichier, mot)) {
+			mots.insert(mot);
+			TRACE(mot.c_str());
+
+		}
+		TRACE("Genome cr¨¦¨¦\r\n");
+		fichier.close();
+	}
+	else
+	{
+		TRACE("Impossible d'ouvrir le fichier!\r\n");
+	}**/
+	list<string> mots;
+	mots.push_back("AAAA");
+	mots.push_back("BBBB");
+	dictionnaire.insert(pair <string, list<string>>("AIDS", mots));
 }
 
 // POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouv?dans le génome. Seul le parcours change selon le type d'analyse.

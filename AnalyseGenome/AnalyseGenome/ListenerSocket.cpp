@@ -12,6 +12,11 @@ ListenerSocket::ListenerSocket()
 {
 }
 
+ListenerSocket::ListenerSocket(ServiceAnalyse * service)
+{
+	this->service = service;
+}
+
 ListenerSocket::~ListenerSocket()
 {
 }
@@ -19,7 +24,7 @@ ListenerSocket::~ListenerSocket()
 void ListenerSocket::OnAccept(int nErrorCode)
 {
 	TRACE("connection established\r\n");
-	ConnectedSocket* pConnectedSock = new ConnectedSocket();
+	ConnectedSocket* pConnectedSock = new ConnectedSocket(service);
 
 	CString strPeerName;
 	UINT uiPort;

@@ -5,6 +5,7 @@
 #pragma once
 
 #include "ListenerSocket.h"
+#include "ServiceAnalyse.h";
 
 // CAnalyseGenomeDlg dialog
 class CAnalyseGenomeDlg : public CDialogEx
@@ -35,7 +36,8 @@ protected:
 
 private:
 	const int LISTENER_PORT = 8080;
-	ListenerSocket listenerSock;
+	ListenerSocket * listenerSock;
+	ServiceAnalyse *service;
 public:
 	afx_msg void OnBnClickedButton1();
 };
