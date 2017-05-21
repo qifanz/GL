@@ -22,6 +22,7 @@ ConnectedSocket::ConnectedSocket(ServiceAnalyse* service)
 
 void ConnectedSocket::OnReceive(int nErrorCode)
 {
+	
 	TRACE("Msg received: \r\n");
 	const int BUFF_LEN = 2048;
 	char szBuff[BUFF_LEN];
@@ -33,7 +34,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 
 	szBuff[nReceivedSize - 1] = '\0';
 	TRACE("%s\r\n",szBuff);
-
+	AfxMessageBox(CString(szBuff));
 	if (strstr(szBuff, "GET DISEASES"))
 	{
 		UtilParser paser;
@@ -77,6 +78,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 			else
 				TRACE("no\r\n");
 		}
+		Send(paser.prepareMsgResultatGenerale(a), BUFF_LEN);
 
 	}
 

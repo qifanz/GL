@@ -44,16 +44,30 @@ const char * UtilParser::prepareMsgResultatCiblee(Analyse * analyse)
 			msgToSend += "0\r\n";
 		}
 		msgToSend += "\r\n";
-		char msg[BUFF_LEN];
-		strcpy_s(msg, msgToSend.c_str());
-		TRACE(msg);
-		return msg;
+		
 	}
+	char msg[BUFF_LEN];
+	strcpy_s(msg, msgToSend.c_str());
+	TRACE(msg);
+	return msg;
 }
 
 const char * UtilParser::prepareMsgResultatGenerale(Analyse * analyse)
 {
-	return nullptr;
+	string msgToSend;
+	msgToSend += "MA v1.0\r\n";
+	for (auto res : analyse->resultats)
+	{
+		if (res.second) {
+			msgToSend += "DISEASE ";
+			msgToSend += res.first;
+			msgToSend += '\r\n';
+		}
+	}
+		char msg[BUFF_LEN];
+		strcpy_s(msg, msgToSend.c_str());
+		TRACE(msg);
+		return msg;
 }
 
 
