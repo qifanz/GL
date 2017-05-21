@@ -37,8 +37,21 @@ void ServiceAnalyse::initialise(string nomFichierGenome)
 	}**/
 	list<string> mots;
 	mots.push_back("AAAT");
+	mots.push_back("GCGC");
 	
 	dictionnaire.insert(pair <string, list<string>>("AIDS", mots));
+	
+	list<string> mots2;
+	mots2.push_back("AAAT");
+	mots2.push_back("BBBB");
+
+	dictionnaire.insert(pair <string, list<string>>("H5N1", mots2));
+	
+	list<string> mots3;
+	mots3.push_back("AAAT");
+	mots3.push_back("CCCG");
+	dictionnaire.insert(pair <string, list<string>>("H5N2", mots3));
+
 
 }
 
@@ -56,9 +69,11 @@ void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 	bool result = true;
 	for (auto g:genome)
 	{
-		if (a.genome.mots.find(g)==a.genome.mots.end())
+		if (a.genome.mots.find(g) == a.genome.mots.end())
+		{
 			result = false;
-		break;
+			break;
+		}
 	}
 	a.resultats.insert(pair<string, bool>(maladie, result));
 
@@ -67,11 +82,25 @@ void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 void ServiceAnalyse::AnalyseGenerale(Analyse& a)
 //Utiliser un iterator pour parcourir toute la map. Pour chaque pair, lancer une analyse
 {
+	/**
 	genStart = a.getGenome().mots.begin();
 	genStop = a.getGenome().mots.end();
 	for (DICO_IT tuple = dictionnaire.begin(); tuple != dictionnaire.end(); tuple++) 
 	{
 		ParcoursGenome(tuple, a);
+	}**/
+	bool result = true;
+	for (auto dic : dictionnaire)
+	{
+		result = true;
+		for (auto mot : dic.second)
+		{
+			if (a.genome.mots.find(mot) == a.genome.mots.end())
+			{
+				result = false;
+			}
+		}
+		a.resultats.insert(pair<string, bool>(dic.first, result));
 	}
 }
 

@@ -12,7 +12,10 @@ public:
 	UtilParser();
 	~UtilParser();
 	const char* prepareMsgListMaladies(set<string> listeMaladies);
+	const char* prepareMsgResultatCiblee(Analyse* analyse);
+	const char* prepareMsgResultatGenerale(Analyse* analyse);
 	Analyse* traiteMsgAnalyseCiblee(const char* msgReceived);
 	Analyse* traiteMsgAnalyseGenerale(const char* msgReceived);
+
 };
 

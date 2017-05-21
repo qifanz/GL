@@ -27,6 +27,37 @@ const char * UtilParser::prepareMsgListMaladies(set<string> listeMaladies)
 	return msg;
 }
 
+const char * UtilParser::prepareMsgResultatCiblee(Analyse * analyse)
+{
+	string msgToSend;
+	msgToSend += "MA v1.0\r\n";
+	for (auto res : analyse->resultats)
+	{
+		msgToSend += "DISEASE ";
+		msgToSend+= res.first;
+		msgToSend += '\r\n';
+		if (res.second)
+		{
+			msgToSend += "1\r\n";
+		}
+		else {
+			msgToSend += "0\r\n";
+		}
+		msgToSend += "\r\n";
+		char msg[BUFF_LEN];
+		strcpy_s(msg, msgToSend.c_str());
+		TRACE(msg);
+		return msg;
+	}
+}
+
+const char * UtilParser::prepareMsgResultatGenerale(Analyse * analyse)
+{
+	return nullptr;
+}
+
+
+
 Analyse* UtilParser::traiteMsgAnalyseCiblee(const char * msgReceived)
 {
 	
@@ -62,6 +93,26 @@ Analyse* UtilParser::traiteMsgAnalyseCiblee(const char * msgReceived)
 
 Analyse* UtilParser::traiteMsgAnalyseGenerale(const char * msgReceived)
 {
-	return nullptr;
+	Analyse *a = new Analyse;
+	string msg(msgReceived);
+	int pos = msg.find('\r');
+
+	int pos1 = msg.find('\r', pos + 1);
+
+	a->type = "generale";
+
+	int gstart = pos1 + 1;
+	int gend = 0;
+
+	while (true)
+	{
+		gend = msg.find(";", gstart + 1);
+		a->genome.mots.insert(msg.substr(gstart + 1, gend - gstart - 1));
+		gstart = gend;
+		if (gend >= msg.size() - 3)
+			break;
+	}
+
+	return a;
 }
 

@@ -49,20 +49,34 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 		 for (auto it : a->genome.mots)
 		 {
 			 TRACE("%s\r\n", it.c_str());
-		 }
+		 } 
 
 
 		service->AnalyseCiblee(*a, a->type);
 
+		Send(paser.prepareMsgResultatCiblee(a),BUFF_LEN);
 
-		for (auto it : a->resultats){
+
+	}
+	else if (strstr(szBuff, "CHECK ALL"))
+	{
+		UtilParser paser;
+		Analyse *a = (paser.traiteMsgAnalyseGenerale(szBuff));
+		TRACE("version %s\r\n", a->version.c_str());
+		TRACE("type %s\r\n", a->type.c_str());
+		for (auto it : a->genome.mots)
+		{
+			TRACE("%s\r\n", it.c_str());
+		}
+
+		service->AnalyseGenerale(*a);
+		for (auto it : a->resultats) {
 			TRACE("disease %s : \r\n", it.first.c_str());
 			if (it.second)
 				TRACE("yes\r\n");
 			else
 				TRACE("no\r\n");
 		}
-
 
 	}
 
