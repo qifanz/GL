@@ -8,6 +8,7 @@ using namespace std;
 
 Genome::Genome()
 {
+	//version = "1.0";
 }
 
 Genome::Genome(string nomFichierGenome)
@@ -26,6 +27,14 @@ Genome::Genome(string nomFichierGenome)
 	else
 	{
 		cerr << "Impossible d'ouvrir le fichier!" << endl;
+	}
+}
+
+Genome::Genome(const Genome & g):version(g.version)
+{
+	for (auto mot : g.mots)
+	{
+		mots.insert(mot);
 	}
 }
 

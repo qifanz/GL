@@ -157,6 +157,7 @@ HCURSOR CAnalyseGenomeDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeDlg::OnBnClickedButton1()
 {
+	
 	service = new ServiceAnalyse();
 	service->initialise("abc");
 	listenerSock = new ListenerSocket(service);

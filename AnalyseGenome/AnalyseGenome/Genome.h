@@ -8,6 +8,7 @@ class Genome
 public:
 	Genome();
 	Genome(string nomFichierGenome);
+	Genome(const Genome& g);
 	~Genome();
 public:
 	friend ostream& operator<<(ostream &flux, Genome const& genome);

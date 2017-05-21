@@ -6,10 +6,19 @@ using namespace std;
 
 Analyse::Analyse()
 {
+	version = "1.0";
 }
 
 Analyse::Analyse(Genome genome, string type, string version) : genome(genome), type(type), version(version)
 {
+}
+
+Analyse::Analyse(const Analyse & analyse):type(analyse.type),version(analyse.version),genome(analyse.genome)
+{
+	for (auto res : analyse.resultats)
+	{
+		resultats.insert(res);
+	}
 }
 
 

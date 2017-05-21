@@ -8,6 +8,7 @@ class Analyse
 public:
 	Analyse();
 	Analyse(Genome genome, string type, string version);
+	Analyse(const Analyse& analyse);
 	~Analyse();
 
 public:

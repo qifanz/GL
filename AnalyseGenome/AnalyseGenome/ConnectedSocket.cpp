@@ -32,12 +32,38 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 		return;
 
 	szBuff[nReceivedSize - 1] = '\0';
-	TRACE(szBuff);
+	TRACE("%s\r\n",szBuff);
 
 	if (strstr(szBuff, "GET DISEASES"))
 	{
 		UtilParser paser;
 		Send(paser.prepareMsgListMaladies(this->service->getListeMaladies()), BUFF_LEN);
+	}
+	else if (strstr(szBuff, "CHECK DISEASE")) {
+		UtilParser paser;
+		 Analyse *a=(paser.traiteMsgAnalyseCiblee(szBuff));
+
+
+		 TRACE("version %s\r\n",a->version.c_str());
+		 TRACE("type %s\r\n", a->type.c_str());
+		 for (auto it : a->genome.mots)
+		 {
+			 TRACE("%s\r\n", it.c_str());
+		 }
+
+
+		service->AnalyseCiblee(*a, a->type);
+
+
+		for (auto it : a->resultats){
+			TRACE("disease %s : ", it.first.c_str());
+			if (it.second)
+				TRACE("yes\r\n");
+			else
+				TRACE("no\r\n");
+		}
+
+
 	}
 
 	CAsyncSocket::OnReceive(nErrorCode);
