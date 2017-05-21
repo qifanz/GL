@@ -36,9 +36,10 @@ void ServiceAnalyse::initialise(string nomFichierGenome)
 		TRACE("Impossible d'ouvrir le fichier!\r\n");
 	}**/
 	list<string> mots;
-	mots.push_back("AAAA");
-	mots.push_back("BBBB");
+	mots.push_back("AAAT");
+	
 	dictionnaire.insert(pair <string, list<string>>("AIDS", mots));
+
 }
 
 // POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouv?dans le génome. Seul le parcours change selon le type d'analyse.
@@ -46,10 +47,21 @@ void ServiceAnalyse::initialise(string nomFichierGenome)
 void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 //Utiliser find pour trouver le pair<maladie,mots> pour la maladie donnée dans la map.
 {
+	/**
 	genStart = a.getGenome().mots.begin();
 	genStop = a.getGenome().mots.end();
 	DICO_IT tuple = dictionnaire.find(maladie);
-	ParcoursGenome(tuple, a);
+	ParcoursGenome(tuple, a);**/
+	list<string> genome= dictionnaire.find(maladie)->second;
+	bool result = true;
+	for (auto g:genome)
+	{
+		if (a.genome.mots.find(g)==a.genome.mots.end())
+			result = false;
+		break;
+	}
+	a.resultats.insert(pair<string, bool>(maladie, result));
+
 }
 
 void ServiceAnalyse::AnalyseGenerale(Analyse& a)

@@ -56,7 +56,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 
 
 		for (auto it : a->resultats){
-			TRACE("disease %s : ", it.first.c_str());
+			TRACE("disease %s : \r\n", it.first.c_str());
 			if (it.second)
 				TRACE("yes\r\n");
 			else
