@@ -13,19 +13,28 @@ ServiceAnalyse::~ServiceAnalyse()
 {
 }
 
-void ServiceAnalyse::initialise(string nomFichierGenome)
+void ServiceAnalyse::initialise(CString nomFichierGenome)
 //uniquement pour les tests, initialise le serveur avec un dictionnaire
 {
-	/**
+
 	ifstream fichier(nomFichierGenome, ios::in);
 	if (fichier)
 	{
 		string version;
 		getline(fichier, version);
-		string mot;
-		while (getline(fichier, mot)) {
-			mots.insert(mot);
-			TRACE(mot.c_str());
+		string line;
+		while (getline(fichier, line)) {
+			list<string> mots;
+			string mot;
+			int pos = line.find(";");
+			string maladie = line.substr(0, pos);
+			for (int i = pos+1; i < line.length(); i += 5)
+			{
+				mot = line.substr(i, 4);
+				mots.push_back(mot);
+				TRACE(mot.c_str());
+			}
+			dictionnaire.insert(pair<string, list<string>>(maladie, mots));
 
 		}
 		TRACE("Genome cr¨¦¨¦\r\n");
@@ -34,7 +43,8 @@ void ServiceAnalyse::initialise(string nomFichierGenome)
 	else
 	{
 		TRACE("Impossible d'ouvrir le fichier!\r\n");
-	}**/
+	}
+	/**
 	list<string> mots;
 	mots.push_back("AAAT");
 	mots.push_back("GCGC");
@@ -51,7 +61,7 @@ void ServiceAnalyse::initialise(string nomFichierGenome)
 	mots3.push_back("AAAT");
 	mots3.push_back("CCCG");
 	dictionnaire.insert(pair <string, list<string>>("H5N2", mots3));
-
+	**/
 
 }
 

@@ -27,7 +27,7 @@ public:
 	ServiceAnalyse();
 	~ServiceAnalyse();
 
-	void initialise(string dicoFile);
+	void initialise(CString dicoFile);
 
 private :
 	void ParcoursGenome(DICO_IT tuple, Analyse& a);
