@@ -40,4 +40,6 @@ private:
 	ServiceAnalyse *service;
 public:
 	afx_msg void OnBnClickedButton1();
+	
+	int portServer;
 };

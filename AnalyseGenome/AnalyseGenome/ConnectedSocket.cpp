@@ -34,7 +34,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 
 	szBuff[nReceivedSize - 1] = '\0';
 	TRACE("%s\r\n",szBuff);
-	AfxMessageBox(CString(szBuff));
+	//AfxMessageBox(CString(szBuff));
 	if (strstr(szBuff, "GET DISEASES"))
 	{
 		UtilParser paser;

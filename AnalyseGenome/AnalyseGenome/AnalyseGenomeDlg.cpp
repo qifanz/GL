@@ -51,6 +51,8 @@ END_MESSAGE_MAP()
 
 CAnalyseGenomeDlg::CAnalyseGenomeDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_ANALYSEGENOME_DIALOG, pParent)
+	
+	, portServer(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -58,6 +60,8 @@ CAnalyseGenomeDlg::CAnalyseGenomeDlg(CWnd* pParent /*=NULL*/)
 void CAnalyseGenomeDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+
+	DDX_Text(pDX, IDC_EDIT2, portServer);
 }
 
 BEGIN_MESSAGE_MAP(CAnalyseGenomeDlg, CDialogEx)
@@ -157,13 +161,18 @@ HCURSOR CAnalyseGenomeDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeDlg::OnBnClickedButton1()
 {
-	
+	UpdateData(true);
+	int temp = portServer;
+	UpdateData(false);
+
 	service = new ServiceAnalyse();
 	service->initialise("abc");
 	listenerSock = new ListenerSocket(service);
-	listenerSock->Create(8080);
-	if (listenerSock->Listen())
-		AfxMessageBox(_T("Now listening"));
+	listenerSock->Create(temp);
+	if (listenerSock->Listen()){
+		TRACE("%d" ,temp);
+	AfxMessageBox(_T("Now listening on "));
+}
 	else
 	{
 		AfxMessageBox(_T("Unable to listen"));
