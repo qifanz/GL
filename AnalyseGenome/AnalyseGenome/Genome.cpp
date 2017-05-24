@@ -5,58 +5,55 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-
-Genome::Genome()
-{
-	//version = "1.0";
-}
-
-Genome::Genome(string nomFichierGenome)
+Genome::Genome() {
+	version = "1.1";
+};
+Genome::Genome(CString nomFichierGenome)
 {
 	ifstream fichier(nomFichierGenome, ios::in);
 	if (fichier)
 	{
+
 		getline(fichier, version);
-		string mot;
-		while (getline(fichier, mot)) {
-			mots.insert(mot);
+		if (!strstr(version.c_str(), ("MA v"))) {
+			AfxMessageBox((CString)("Ce n'est pas un fichier correct!!\r\n"));
+			fichier.close();
 		}
-		cout << "Genome créé" << endl;
-		fichier.close();
+		else {
+			string mot;
+			while (getline(fichier, mot)) {
+				mots.insert(mot);
+				TRACE(mot.c_str());
+
+			}
+			AfxMessageBox((CString)"Genome charge\r\n");
+			fichier.close();
+		}
 	}
 	else
 	{
-		cerr << "Impossible d'ouvrir le fichier!" << endl;
+		AfxMessageBox((CString)("Impossible d'ouvrir le fichier!\r\n"));
 	}
 }
 
-Genome::Genome(const Genome & g):version(g.version)
-{
-	for (auto mot : g.mots)
-	{
-		mots.insert(mot);
-	}
-}
 
 
 Genome::~Genome()
 {
 }
 
-ostream & operator<<(ostream & flux, Genome const & genome)
+void Genome::afficher()
 {
-	genome.afficher(flux);
-	return flux;
-}
-
-void Genome::afficher(ostream &flux) const
-{
-	flux << version << endl;
+	cout << version << endl;
 	multiset<string>::const_iterator
 		msit(mots.begin()),
 		msend(mots.end());
 	for (; msit != msend; ++msit) {
-		flux << *msit << endl;
+		cout << *msit << endl;
 	}
 }
 
+string Genome::getVersion()
+{
+	return version;
+}

@@ -7,19 +7,20 @@ class Analyse
 {
 public:
 	Analyse();
-	Analyse(Genome genome, string type, string version);
-	Analyse(const Analyse& analyse);
+	Analyse(Genome genome, string type);
 	~Analyse();
 
-public:
 	friend ostream& operator<<(ostream &flux, Analyse const& analyse);
 	void afficher(ostream &flux) const;
-	Genome getGenome();
+	string getVersion();
 
 public:
-	string type;
-	string version;
 	map<string, bool> resultats;
 	Genome genome;
+	string type;
+
+private :
+	string version;
+
 };
 
