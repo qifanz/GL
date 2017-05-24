@@ -26,11 +26,6 @@ Analyse::~Analyse()
 {
 }
 
-void Analyse::addResult(string maladie)
-{
-	resultats[maladie] = true;
-}
-
 
 ostream & operator<<(ostream & flux, Analyse const & analyse)
 {

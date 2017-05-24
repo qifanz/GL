@@ -3,11 +3,10 @@
 #include <fstream>
 #include <string>
 using namespace std;
+
 ServiceAnalyse::ServiceAnalyse()
 {
 }
-
-
 
 ServiceAnalyse::~ServiceAnalyse()
 {
@@ -44,37 +43,12 @@ void ServiceAnalyse::initialise(CString nomFichierGenome)
 	{
 		TRACE("Impossible d'ouvrir le fichier!\r\n");
 	}
-	/**
-	list<string> mots;
-	mots.push_back("AAAT");
-	mots.push_back("GCGC");
-	
-	dictionnaire.insert(pair <string, list<string>>("AIDS", mots));
-	
-	list<string> mots2;
-	mots2.push_back("AAAT");
-	mots2.push_back("BBBB");
-
-	dictionnaire.insert(pair <string, list<string>>("H5N1", mots2));
-	
-	list<string> mots3;
-	mots3.push_back("AAAT");
-	mots3.push_back("CCCG");
-	dictionnaire.insert(pair <string, list<string>>("H5N2", mots3));
-	**/
-
 }
 
-// POUR LES ANALYSES :  Pour chaque pair parcouru, comparer la list de mots correspondante avec find() dans le multiset du génome. Rajouter un resultat dans l'analyse avec addResult(String maladie) pour chaque mot trouv?dans le génome. Seul le parcours change selon le type d'analyse.
 
 void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 //Utiliser find pour trouver le pair<maladie,mots> pour la maladie donnée dans la map.
 {
-	/**
-	genStart = a.getGenome().mots.begin();
-	genStop = a.getGenome().mots.end();
-	DICO_IT tuple = dictionnaire.find(maladie);
-	ParcoursGenome(tuple, a);**/
 	list<string> genome= dictionnaire.find(maladie)->second;
 	bool result = true;
 	for (auto g:genome)
@@ -90,16 +64,9 @@ void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
 }
 
 void ServiceAnalyse::AnalyseGenerale(Analyse& a)
-//Utiliser un iterator pour parcourir toute la map. Pour chaque pair, lancer une analyse
+//Utiliser un auto pour parcourir toute la map. Pour chaque pair, lancer une analyse
 {
-	/**
-	genStart = a.getGenome().mots.begin();
-	genStop = a.getGenome().mots.end();
-	for (DICO_IT tuple = dictionnaire.begin(); tuple != dictionnaire.end(); tuple++) 
-	{
-		ParcoursGenome(tuple, a);
-	}**/
-	bool result = true;
+	bool result;
 	for (auto dic : dictionnaire)
 	{
 		result = true;
@@ -114,26 +81,13 @@ void ServiceAnalyse::AnalyseGenerale(Analyse& a)
 	}
 }
 
-void ServiceAnalyse::ParcoursGenome(DICO_IT tuple, Analyse& a) {
-	for (MOTS_IT i = (*tuple).second.begin(); i != (*tuple).second.end(); i++) 
-	{
-		for (GENO_IT gen = genStart; gen != genStop; gen++) 
-		{
-			if ((*i) == (*gen)) 
-			{
-				a.addResult((*tuple).first);
-			}
-		}
-	}
-}
-
 set<string> ServiceAnalyse::getListeMaladies()
 {
-	//Utiliser un iterator pour parcourir toute la map. Renvoie un set correspondant a la liste des maladies.
+	//Utiliser un auto pour parcourir toute la map. Renvoie un set correspondant a la liste des maladies.
 	set<string> listeMaladies;
-	for(DICO_IT i = dictionnaire.begin(); i!=dictionnaire.end(); i++)
+	for (auto maladie : dictionnaire)
 	{
-		listeMaladies.insert((*i).first);
+		listeMaladies.insert(maladie.first);
 	}
 	return listeMaladies;
 }
