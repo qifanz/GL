@@ -35,7 +35,7 @@ const char * UtilParser::prepareMsgResultatCiblee(Analyse * analyse)
 	{
 		msgToSend += "DISEASE ";
 		msgToSend+= res.first;
-		msgToSend += '\r\n';
+		msgToSend += "\r\n";
 		if (res.second)
 		{
 			msgToSend += "1\r\n";
@@ -61,7 +61,7 @@ const char * UtilParser::prepareMsgResultatGenerale(Analyse * analyse)
 		if (res.second) {
 			msgToSend += "DISEASE ";
 			msgToSend += res.first;
-			msgToSend += '\r\n';
+			msgToSend += "\r\n";
 		}
 	}
 		char msg[BUFF_LEN];
