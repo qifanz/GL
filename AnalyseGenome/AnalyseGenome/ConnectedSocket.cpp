@@ -45,7 +45,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 		 Analyse *a=(paser.traiteMsgAnalyseCiblee(szBuff));
 
 
-		 TRACE("version %s\r\n",a->version.c_str());
+		 TRACE("version %s\r\n",a->getVersion().c_str());
 		 TRACE("type %s\r\n", a->type.c_str());
 		 for (auto it : a->genome.mots)
 		 {
@@ -63,7 +63,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 	{
 		UtilParser paser;
 		Analyse *a = (paser.traiteMsgAnalyseGenerale(szBuff));
-		TRACE("version %s\r\n", a->version.c_str());
+		TRACE("version %s\r\n", a->getVersion().c_str());
 		TRACE("type %s\r\n", a->type.c_str());
 		for (auto it : a->genome.mots)
 		{

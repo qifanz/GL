@@ -7,14 +7,14 @@ class Genome
 {
 public:
 	Genome();
-	Genome(string nomFichierGenome);
-	Genome(const Genome& g);
+	Genome(CString nomFichierGenome);
 	~Genome();
-public:
-	friend ostream& operator<<(ostream &flux, Genome const& genome);
-	void afficher(ostream &flux) const;
-public:
-	string version;
-	multiset<string> mots;
-};
+	void afficher();
+	string getVersion();
 
+public:
+	multiset<string> mots;
+	
+private :
+	string version;
+};
