@@ -16,10 +16,10 @@ Analyse::Analyse(Genome genome, string type) : genome(genome), type(type), versi
 
 /**Analyse::Analyse(const Analyse & analyse):type(analyse.type),version(analyse.version),genome(analyse.genome)
 {
-	for (auto res : analyse.resultats)
-	{
-		resultats.insert(res);
-	}
+for (auto res : analyse.resultats)
+{
+resultats.insert(res);
+}
 }**/
 
 

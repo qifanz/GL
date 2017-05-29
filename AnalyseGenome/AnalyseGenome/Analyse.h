@@ -19,8 +19,7 @@ public:
 	Genome genome;
 	string type;
 
-private :
+private:
 	string version;
 
 };
-

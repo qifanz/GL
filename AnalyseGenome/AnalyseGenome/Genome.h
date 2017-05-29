@@ -14,7 +14,7 @@ public:
 
 public:
 	multiset<string> mots;
-	
-private :
+
+private:
 	string version;
 };

@@ -5,7 +5,7 @@
 #pragma once
 
 #include "ListenerSocket.h"
-#include "ServiceAnalyse.h";
+#include "ServiceAnalyse.h"
 
 // CAnalyseGenomeDlg dialog
 class CAnalyseGenomeDlg : public CDialogEx
@@ -42,5 +42,5 @@ public:
 	afx_msg void OnBnClickedButton1();
 	
 	int portServer;
-	CString fichierDic;
+
 };

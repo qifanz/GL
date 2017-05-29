@@ -1,9 +1,10 @@
-// ClientSocket.cpp? fichier d'implémentation
+// ClientSocket.cpp? fichier d'impl¨¦mentation
 //
 
 #include "stdafx.h"
 #include "AnalyseGenome.h"
 #include "ConnectedSocket.h"
+#include <fstream>
 
 using namespace std;
 
@@ -22,7 +23,8 @@ ConnectedSocket::ConnectedSocket(ServiceAnalyse* service)
 
 void ConnectedSocket::OnReceive(int nErrorCode)
 {
-	
+
+
 	TRACE("Msg received: \r\n");
 	const int BUFF_LEN = 2048;
 	char szBuff[BUFF_LEN];
@@ -33,7 +35,8 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 		return;
 
 	szBuff[nReceivedSize - 1] = '\0';
-	TRACE("%s\r\n",szBuff);
+	TRACE("%s\r\n", szBuff);
+	logger(szBuff);
 	//AfxMessageBox(CString(szBuff));
 	if (strstr(szBuff, "GET DISEASES"))
 	{
@@ -42,20 +45,20 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 	}
 	else if (strstr(szBuff, "CHECK DISEASE")) {
 		UtilParser paser;
-		 Analyse *a=(paser.traiteMsgAnalyseCiblee(szBuff));
+		Analyse *a = (paser.traiteMsgAnalyseCiblee(szBuff));
 
 
-		 TRACE("version %s\r\n",a->getVersion().c_str());
-		 TRACE("type %s\r\n", a->type.c_str());
-		 for (auto it : a->genome.mots)
-		 {
-			 TRACE("%s\r\n", it.c_str());
-		 } 
+		TRACE("version %s\r\n", a->getVersion().c_str());
+		TRACE("type %s\r\n", a->type.c_str());
+		for (auto it : a->genome.mots)
+		{
+			TRACE("%s\r\n", it.c_str());
+		}
 
 
 		service->AnalyseCiblee(*a, a->type);
 
-		Send(paser.prepareMsgResultatCiblee(a),BUFF_LEN);
+		Send(paser.prepareMsgResultatCiblee(a), BUFF_LEN);
 
 
 	}
@@ -83,4 +86,22 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 	}
 
 	CAsyncSocket::OnReceive(nErrorCode);
+}
+
+void ConnectedSocket::logger(char * msg)
+{
+
+	{
+		ofstream fichier("res/log.txt", ios::out | ios::app);
+
+		if (fichier)
+		{
+			fichier << msg << endl;
+			fichier.close();
+		}
+		else
+			AfxMessageBox((CString)("Impossible d'ouvrir le fichier log.txt!\r\n"));
+
+	}
+
 }

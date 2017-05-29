@@ -53,7 +53,7 @@ CAnalyseGenomeDlg::CAnalyseGenomeDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_ANALYSEGENOME_DIALOG, pParent)
 	
 	, portServer(0)
-	, fichierDic(_T(""))
+
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -63,7 +63,7 @@ void CAnalyseGenomeDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 
 	DDX_Text(pDX, IDC_EDIT2, portServer);
-	DDX_Text(pDX, dictionnaireName, fichierDic);
+
 }
 
 BEGIN_MESSAGE_MAP(CAnalyseGenomeDlg, CDialogEx)
@@ -164,16 +164,20 @@ HCURSOR CAnalyseGenomeDlg::OnQueryDragIcon()
 void CAnalyseGenomeDlg::OnBnClickedButton1()
 {
 	UpdateData(true);
-	int temp = portServer;
-	CString nomFichier=(fichierDic);
+	//CString nomFichier = nomFichierGenome;
+	CString nomFichier;
+	GetDlgItemText(IDC_MFCEDITBROWSE1, nomFichier);
+
+	int p = portServer;
+
 	UpdateData(false);
 
 	service = new ServiceAnalyse();
 	service->initialise((nomFichier));
 	listenerSock = new ListenerSocket(service);
-	listenerSock->Create(temp);
+	listenerSock->Create(p,1,63L,_T("127.0.0.1"));
 	if (listenerSock->Listen()){
-		TRACE("%d" ,temp);
+		TRACE("%d" ,p);
 	AfxMessageBox(_T("Now listening on "));
 }
 	else

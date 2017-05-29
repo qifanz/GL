@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "ServiceAnalyse.h"
 #include <fstream>
 #include <string>
@@ -27,7 +27,7 @@ void ServiceAnalyse::initialise(CString nomFichierGenome)
 			string mot;
 			int pos = line.find(";");
 			string maladie = line.substr(0, pos);
-			for (int i = pos+1; i < line.length(); i += 5)
+			for (int i = pos + 1; i < line.length(); i += 5)
 			{
 				mot = line.substr(i, 4);
 				mots.push_back(mot);
@@ -36,7 +36,7 @@ void ServiceAnalyse::initialise(CString nomFichierGenome)
 			dictionnaire.insert(pair<string, list<string>>(maladie, mots));
 
 		}
-		TRACE("Genome cr¨¦¨¦\r\n");
+		TRACE("Genome crÂ¨Â¦Â¨Â¦\r\n");
 		fichier.close();
 	}
 	else
@@ -47,11 +47,11 @@ void ServiceAnalyse::initialise(CString nomFichierGenome)
 
 
 void ServiceAnalyse::AnalyseCiblee(Analyse& a, string maladie)
-//Utiliser find pour trouver le pair<maladie,mots> pour la maladie donnée dans la map.
+//Utiliser find pour trouver le pair<maladie,mots> pour la maladie donnÃ©e dans la map.
 {
-	list<string> genome= dictionnaire.find(maladie)->second;
+	list<string> genome = dictionnaire.find(maladie)->second;
 	bool result = true;
-	for (auto g:genome)
+	for (auto g : genome)
 	{
 		if (a.genome.mots.find(g) == a.genome.mots.end())
 		{
@@ -91,5 +91,3 @@ set<string> ServiceAnalyse::getListeMaladies()
 	}
 	return listeMaladies;
 }
-
-
