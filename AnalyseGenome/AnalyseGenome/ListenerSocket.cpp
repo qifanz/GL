@@ -19,12 +19,17 @@ ListenerSocket::ListenerSocket(ServiceAnalyse * service)
 
 ListenerSocket::~ListenerSocket()
 {
+	for (auto sock : listSockets)
+	{
+		delete sock;
+	}
 }
 
 void ListenerSocket::OnAccept(int nErrorCode)
 {
 	TRACE("connection established\r\n");
 	ConnectedSocket* pConnectedSock = new ConnectedSocket(service);
+	listSockets.push_back(pConnectedSock);
 
 	CString strPeerName;
 	UINT uiPort;

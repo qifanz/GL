@@ -40,11 +40,11 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 	//AfxMessageBox(CString(szBuff));
 	if (strstr(szBuff, "GET DISEASES"))
 	{
-		UtilParser paser;
+	
 		Send(paser.prepareMsgListMaladies(this->service->getListeMaladies()), BUFF_LEN);
 	}
 	else if (strstr(szBuff, "CHECK DISEASE")) {
-		UtilParser paser;
+		
 		Analyse *a = (paser.traiteMsgAnalyseCiblee(szBuff));
 
 
@@ -64,7 +64,7 @@ void ConnectedSocket::OnReceive(int nErrorCode)
 	}
 	else if (strstr(szBuff, "CHECK ALL"))
 	{
-		UtilParser paser;
+		
 		Analyse *a = (paser.traiteMsgAnalyseGenerale(szBuff));
 		TRACE("version %s\r\n", a->getVersion().c_str());
 		TRACE("type %s\r\n", a->type.c_str());

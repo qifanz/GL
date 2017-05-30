@@ -17,5 +17,7 @@ public:
 	Analyse* traiteMsgAnalyseCiblee(const char* msgReceived);
 	Analyse* traiteMsgAnalyseGenerale(const char* msgReceived);
 
+private:
+
 };
 
