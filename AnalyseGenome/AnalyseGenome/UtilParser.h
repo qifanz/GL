@@ -18,6 +18,6 @@ public:
 	Analyse* traiteMsgAnalyseGenerale(const char* msgReceived);
 
 private:
-
+	char msg[BUFF_LEN];
 };
 

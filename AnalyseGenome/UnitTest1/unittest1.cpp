@@ -11,7 +11,7 @@ namespace UnitTest1
 		
 		TEST_METHOD(TestMethod1)
 		{
-			// TODO: 在此输入测试代码
+			
 		}
 
 	};
